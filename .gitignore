@@ -1,0 +1,6 @@
+.env
+.env.*
+*responses*
+*responses*.csv
+node_modules/
+.DS_Store
