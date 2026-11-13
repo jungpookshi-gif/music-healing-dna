@@ -1,5 +1,6 @@
 // Public settings only. Never put credentials here.
 window.MHD_CONFIG = Object.freeze({
+  appsScriptUrl: '', // Google Apps Script /exec URL (or private CORS proxy); takes priority.
   endpoint: '',
   adminApi: '', // HTTPS backend base URL, e.g. https://backend.example/api/
   tracks: {

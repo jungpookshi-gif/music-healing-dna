@@ -55,3 +55,7 @@ Chạy `node tests/core.test.cjs`. Bộ kiểm tra bao gồm mã Mxxxx, tuổi t
 ## Quản trị mới
 
 Mở `/admin/` để đăng nhập và xem số phiếu A, số phiên B, hai bảng, bốn biểu đồ SVG thuần, CSV và làm mới. Xác thực tại backend, không có mật khẩu trong trang hoặc JavaScript frontend. Mặc định `adminApi` để trống cho tới khi có host HTTPS riêng. Xem [hướng dẫn backend](server/README.md) cho demo cục bộ, cấu hình triển khai và giới hạn. Dữ liệu demo là 48 phiếu A và 96 phiên B giả lập hoàn toàn; không đưa dữ liệu này vào phân tích thật.
+
+## Google Apps Script + Sheet
+
+Backend thay thế đã có trong `apps-script/Code.gs` và `apps-script/Schema.gs`. Đọc [hướng dẫn cho người mới và checklist](apps-script/README.md), đặt Script Properties và triển khai Web app /exec; sau đó chỉ điền `appsScriptUrl` trong config.js. Admin và khảo sát tự dùng transport này. Có trang `admin/connection-test.html` để kiểm tra GET/POST từ github.io và proxy tùy chọn nếu CORS bị chặn. Chưa có deployment Google thực hoặc kiểm thử CORS thực trong PR này.
