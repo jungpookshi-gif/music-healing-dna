@@ -7,7 +7,7 @@ async function check(condition,index){
  vm.createContext(c);for(const f of ['config.js','assets/schema.js','assets/i18n.js','assets/core.js']){vm.runInContext(fs.readFileSync(root+f,'utf8'),c);for(const k of ['SCHEMA','I18N'])if(c.window[k])c[k]=c.window[k]}
  c.Core=c.window.Core;
  vm.runInContext(fs.readFileSync(root+'assets/app.js','utf8'),c);
- vm.runInContext(`st.condition=${JSON.stringify(condition)};st.pid='M1234'`,c);get('before-next').onclick();
+ vm.runInContext(`st.condition=${JSON.stringify(condition)};st.pid='M1234'`,c);get('before-answer').value='5';get('before-next').onclick();
  assert.equal(get('preset-fields').hidden,false);assert.equal((get('preset-track').innerHTML.match(/Kevin MacLeod/g)||[]).length,7);
  await get('main-start').onclick();assert.equal(started,0);assert(get('listen-error').textContent);
  get('preset-track').value=String(index);get('preset-track').onchange();await get('main-start').onclick();assert.equal(started,1);assert(audio.src.includes('incompetech.com'));assert.equal(audio.loop,true);assert.equal(get('preset-track').disabled,true);

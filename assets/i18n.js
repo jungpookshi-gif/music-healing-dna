@@ -1,4 +1,11 @@
 window.I18N = {
+ scoreUnanswered:['Chưa chọn điểm','점수를 선택하지 않았습니다','No score selected','尚未选择分数'],
+ scoreHelp:['Kéo hoặc chạm thanh để chọn 0–10, hoặc nhập số. Chưa chọn thì chưa có câu trả lời.','슬라이더를 끌거나 눌러 0–10점을 선택하거나 숫자를 입력하세요. 선택 전에는 미응답입니다.','Drag or tap to choose 0–10, or enter a number. No answer is recorded until you choose.','拖动或点击滑块选择0–10分，也可直接输入数字。选择前视为未回答。'],
+ scoreEntry:['Nhập điểm 0–10','점수 직접 입력(0–10)','Enter score 0–10','直接输入分数（0–10）'],
+ scoreLowLike:['Không thích','좋아하지 않음','Do not like','不喜欢'],
+ scoreHighLike:['Rất thích','매우 좋아함','Like very much','非常喜欢'],
+ scoreLowStress:['Không căng thẳng','전혀 없음','No stress','没有压力'],
+ scoreHighStress:['Rất căng thẳng','매우 심함','Very stressed','压力很大'],
  participantName:['Họ và tên người tham gia','참가자 이름','Participant name','参与者姓名'],
  nameHint:['Bắt buộc, tối đa 80 ký tự. Tên được lưu cùng kết quả khảo sát.','필수 입력, 최대 80자. 이름은 설문 결과와 함께 저장됩니다.','Required, up to 80 characters. Your name is stored with your survey results.','必填，最多80字符。姓名将与问卷结果一同保存。'],
  feedbackTitle:['Góp ý về trải nghiệm khảo sát','설문 참여 의견','Survey experience feedback','问卷体验反馈'],
