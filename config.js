@@ -1,6 +1,6 @@
 // Public settings only. Never put credentials here.
 window.MHD_CONFIG = Object.freeze({
-  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbxuNxOwSQ5AbIOgOsZweFHH5Qk6n6zftrP2yl-vfPjWzy3GkUGGNjR2kJHfbFc2j94A/exec', // Deployed Google Apps Script backend.
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbzITrFAe5iQI5zgqk8MDBE0Uw9cpCsMbMeo9SRClY8lUtqlRzfQY0o-CwCyG08wmth9/exec', // Deployed Google Apps Script backend.
   endpoint: '',
   adminApi: '', // HTTPS backend base URL, e.g. https://backend.example/api/
   tracks: {
