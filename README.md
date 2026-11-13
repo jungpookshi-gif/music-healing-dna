@@ -16,7 +16,7 @@ Mỗi lần mở biểu mẫu hoàn thành một A và một phiên B. `b/index.
 - `assets/schema.js`: câu hỏi và giá trị lưu.
 - `assets/i18n.js`: bản dịch giao diện.
 - `assets/core.js`: kiểm tra và chuẩn hóa dữ liệu.
-- `assets/app.js`: điều phối luồng, đồng hồ, submit và sao chép kết quả.
+- `assets/app.js`: điều phối luồng, đồng hồ, submit và xác nhận lưu kết quả.
 - `assets/audio.js`: âm thanh tổng hợp thử từ mẫu B.
 - `config.js`: cấu hình công khai, không chứa bí mật.
 - `tests/core.test.cjs`: kiểm tra với dữ liệu giả.
@@ -39,15 +39,14 @@ Self cho phép người tham gia tự phát nhạc bên ngoài, URL http/https t
 
 ## Gửi và kết quả
 
-`config.js` có `endpoint: ''` mặc định. Nút cuối gọi `submit()`. Khi chưa có endpoint, không gửi dữ liệu đến máy chủ; hiển thị chuỗi `MHD1:` + Base64 của JSON UTF-8 để sao chép. Đây **không phải mã hóa bảo mật**. Giữ kết quả riêng tư và gửi cho nhóm nghiên cứu qua kênh đã thống nhất.
-
+Kết quả gửi qua Google Apps Script đã cấu hình. Tên tùy chọn ở A và góp ý ở bước cuối được gửi cùng phiên B. Sau khi lưu, chỉ hiển thị xác nhận và lời cảm ơn; không hiển thị mã kết quả hoặc nút sao chép. Nếu gửi lỗi, giữ trang mở và dùng nút thử gửi lại cùng payload; backend Apps Script khử trùng những hàng giống hệt nhau. Không cấu hình backend thì không báo đã lưu.
 Payload: `{ "surveyA": { ... }, "sessionsB": [{ ... }] }`. Các khóa A/B theo Word, giá trị không trả lời giữ `""`, không biến thành 0. `delta = before - after`. Silence để trống `genre`, `bpm`, `like`, `track`, `track_url`.
 
 Nếu cấu hình endpoint HTTPS, máy chủ phải cho phép CORS và nhận JSON POST; trả HTTP 2xx với JSON `{"ok":true}` để báo thành công. Không gửi cookies hay referrer. Giới hạn chờ 15 giây. Khi lỗi vẫn giữ mã kết quả; máy chủ có thể đã nhận trước khi lỗi mạng nên không tự động gửi lại. Backend phải tự xác thực dữ liệu và xử lý trùng lặp; backend tùy chọn có trong `server/`; xem `server/README.md`. Chưa kiểm thử gửi thật vì endpoint cố ý để trống.
 
 ## Dữ liệu và quyền riêng tư
 
-Không có trường tên/email, không thu thập IP bằng mã ứng dụng, không analytics/cookies/localStorage. Câu trả lời chỉ giữ trong bộ nhớ đến khi đóng/tải lại trang; không có khôi phục bản nháp. Không nhập thông tin nhận dạng vào note hoặc tên/link bài hát. Loại bỏ một số tham số theo dõi phổ biến khỏi URL, nhưng việc này không bảo đảm URL hoàn toàn vô danh. Nhà cung cấp hosting và máy chủ nhận có thể ghi nhật ký kết nối riêng; không hứa ẩn danh tuyệt đối. Không lưu dữ liệu thật, khóa API hay mật khẩu vận hành vào repo. Mật khẩu mẫu công khai chỉ dùng với demo giả lập ở backend.
+Có trường tên tùy chọn, không có trường email; không thu thập IP bằng mã ứng dụng, không analytics/cookies/localStorage. Câu trả lời chỉ giữ trong bộ nhớ đến khi đóng/tải lại trang; không có khôi phục bản nháp. Không nhập thông tin nhận dạng vào note hoặc tên/link bài hát. Loại bỏ một số tham số theo dõi phổ biến khỏi URL, nhưng việc này không bảo đảm URL hoàn toàn vô danh. Nhà cung cấp hosting và máy chủ nhận có thể ghi nhật ký kết nối riêng; không hứa ẩn danh tuyệt đối. Không lưu dữ liệu thật, khóa API hay mật khẩu vận hành vào repo. Mật khẩu mẫu công khai chỉ dùng với demo giả lập ở backend.
 
 ## Kiểm tra
 
@@ -63,3 +62,6 @@ Backend thay thế đã có trong `apps-script/Code.gs` và `apps-script/Schema.
 
 ## Mở rộng thư viện nhạc
 Mỗi nhóm giữ 2 bài ban đầu và thêm 5 bài; tổng 14 bản thu. Relax thêm Morning, Fresh Air, Water Lily, Dream Culture, Gymnopedie No. 1; energy thêm Cipher, Motivator, Nonstop, Nowhere Land, Feelin Good. Chi tiết tiêu chí, tác giả/nhạc sĩ và nguồn ở music-credits.html. Nút mở nhạc trong tab mới đã bỏ khỏi phiên; URL nguồn vẫn được lưu vào kết quả.
+
+## Tên và góp ý (2026-11-14)
+Tên không bắt buộc (80 ký tự) ở A, góp ý không bắt buộc (300 ký tự) ở bước cuối trước khi gửi A+B. Bỏ hiển thị mã MHD1 và nút sao chép. Lưu tên/góp ý/cờ phiên trong trường sessionsB.note dưới định dạng có độ dài MHD2|n|f|..., tối đa 500 ký tự và tương thích backend Google Apps Script hiện hành; không đổi header Sheet. Admin và CSV B tách thêm participant_name, feedback, session_notes. Tên chỉ được gửi/lưu khi hoàn tất A+B. Không công khai phản hồi hoặc đưa vào repo. Thử gửi lại chỉ dùng cùng payload giữ trong RAM; backend khử trùng A/B giống hệt. Google Docs là bản chụp riêng của dữ liệu hiện có, không tự đồng bộ; Google Sheets vẫn là nguồn nhận phản hồi mới.

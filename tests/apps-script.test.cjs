@@ -22,4 +22,6 @@ for(let i=0;i<5;i++)assert.equal(call({action:'read',password:'wrong'}).error.co
 assert.equal(JSON.parse(context.doGet().text).surveyA,undefined);assert.equal(call({action:'health'}).ok,true);held=true;assert.equal(call(append('surveyA',a)).error.code,'BUSY');held=false;
 const head=tabs.get('surveyA').cells[0][0];tabs.get('surveyA').cells[0][0]='wrong';assert.equal(call(append('surveyA',a)).error.code,'HEADER_MISMATCH');tabs.get('surveyA').cells[0][0]=head;
 assert.equal(fs.readFileSync('apps-script/Code.gs','utf8').includes('1234'),false);
+const feedbackNote=Core.packResponseDetails('T'.repeat(80),'의견'.repeat(150),['rest_skipped','early_stop:600s','audio_interrupted']);
+const feedbackRow={...b,note:feedbackNote};assert.equal(call(append('sessionsB',feedbackRow)).ok,true);assert.equal(call(append('sessionsB',feedbackRow)).duplicate,true);const roundtrip=tabs.get('sessionsB').cells.at(-1)[Core.B_COLS.indexOf('note')];assert.equal(Core.unpackResponseDetails(roundtrip).participant_name.length,80);assert.equal(Core.unpackResponseDetails(roundtrip).feedback.length,300);
 console.log('PASS: Apps Script service mocks — exact schema, setup, formula blocking, numeric negative delta, deduplication, password gate, lockout, session invalidation, no URL API, header safety. Not a real Google deployment/CORS test.');
