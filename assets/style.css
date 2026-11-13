@@ -125,3 +125,10 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;fl
 .language-switch button:enabled:hover{background:#e9e0f7;color:#49335f}
 .language-switch button[aria-pressed=true]:enabled:hover{background:#563bc6;color:#fff}
 @media(max-width:600px){header{gap:10px;padding:12px 16px}.language-switch{max-width:100%;flex-wrap:wrap;border-radius:18px}.language-switch button{padding:7px 10px;min-height:38px}header>a{font-size:14px}}
+
+/* Side B record follows the session lifecycle; silence remains still. */
+.session-vinyl{margin:20px auto 0;--arm-angle:-10deg}
+.session-vinyl .vinyl-disc{animation-play-state:paused}
+.session-vinyl[data-spinning=true] .vinyl-disc{animation-play-state:running}
+#app[data-motion-off=true] .session-vinyl .vinyl-disc{animation-play-state:paused}
+@media(max-width:600px){.session-vinyl{margin:0 auto -26px;transform:scale(.85)}}
