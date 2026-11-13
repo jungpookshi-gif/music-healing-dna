@@ -10,7 +10,7 @@ const acknowledgedA=new WeakSet();
 async function submit(payload,{autoId=false}={}){const confirmed=[];try{
  let ack,accepted=false;
  for(let attempt=0;attempt<10;attempt++){
-  const item={sheet:'surveyA',columns:root.Core.A_COLS,row:root.Core.A_COLS.map(k=>payload.surveyA[k]??'')};
+  const item={sheet:'surveyA',columns:root.Core.A_COLS,row:root.Core.A_COLS.map(k=>k==='culture'&&['mn','mm','np'].includes(payload.surveyA.culture)?'other':payload.surveyA[k]??'')};
   try{ack=await request(item);if(ack.sheet!=='surveyA')throw Error('Backend không xác nhận đúng tab.');if(!autoId||!ack.duplicate||acknowledgedA.has(payload)){accepted=true;acknowledgedA.add(payload);break}}
   catch(error){if(!autoId||error.code!=='PID_CONFLICT'||acknowledgedA.has(payload))throw error}
   let next;do{next=root.Core.newParticipantId()}while(next===payload.surveyA.pid);payload.surveyA.pid=next;for(const row of payload.sessionsB)row.pid=next;
