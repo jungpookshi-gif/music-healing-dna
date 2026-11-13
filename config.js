@@ -1,6 +1,7 @@
 // Public settings only. Never put credentials here.
 window.MHD_CONFIG = Object.freeze({
   endpoint: '',
+  adminApi: '', // HTTPS backend base URL, e.g. https://backend.example/api/
   tracks: {
     relax: {title:'', src:'', bpm:'', genre:''},
     energy: {title:'', src:'', bpm:'', genre:''}

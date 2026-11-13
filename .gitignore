@@ -1,6 +1,9 @@
 .env
 .env.*
+!server/.env.example
 *responses*
 *responses*.csv
 node_modules/
 .DS_Store
+server/data/
+*.tmp

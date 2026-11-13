@@ -1,12 +1,12 @@
 # Music Healing DNA — A → B
 
-Website tĩnh HTML/CSS/JavaScript, không cần build. Chọn Tiếng Việt, 한국어, English hoặc 简体中文; hoàn thành A → nghỉ 3 phút → B 10 phút → Gửi một lần. Không làm trang admin trong phiên bản này.
+Website tĩnh HTML/CSS/JavaScript, không cần build. Chọn Tiếng Việt, 한국어, English hoặc 简体中文; hoàn thành A → nghỉ 3 phút → B 10 phút → Gửi một lần. Trang quản trị mới ở `admin/index.html`, dùng backend xác thực riêng.
 
 ## Nguồn và phạm vi
 
-Nội dung và giá trị lưu dựa trên `Bang-cau-hoi-va-dap-an.docx` trong ZIP người dùng cung cấp; HTML mẫu dùng để tham khảo giao diện và âm thanh thử. Mã người tham gia được thay theo yêu cầu mới thành M + đúng 4 chữ số tự chọn (ví dụ M0123). Không tự động tạo mã hoặc kiểm tra trùng mã trên máy chủ. Bản dịch Anh/Trung bổ sung cần người nghiên cứu rà soát ngôn ngữ trước khi thu thập chính thức.
+Nội dung và giá trị lưu dựa trên `Bang-cau-hoi-va-dap-an.docx` trong ZIP người dùng cung cấp; HTML mẫu dùng để tham khảo giao diện và âm thanh thử. Mã người tham gia được thay theo yêu cầu mới thành M + đúng 4 chữ số tự chọn (ví dụ M0123). Không tự động tạo mã. Backend tùy chọn phát hiện A khác nhau có cùng mã; không xác minh danh tính người tham gia. Bản dịch Anh/Trung bổ sung cần người nghiên cứu rà soát ngôn ngữ trước khi thu thập chính thức.
 
-Mỗi lần mở biểu mẫu hoàn thành một A và một phiên B. `b/index.html` cũng mở luồng kết hợp từ A, không phải biểu mẫu B riêng. Tài liệu gốc đề cập A một lần và tối đa bốn phiên B; phiên bản tĩnh này không quản lý người tham gia xuyên nhiều lần truy cập hoặc cưỡng chế số phiên. `session_order` để trống cho nhóm nghiên cứu điền. Không dùng các tài liệu SURVEY cũ của repo làm schema cho phiên bản này.
+Mỗi lần mở biểu mẫu hoàn thành một A và một phiên B. `b/index.html` cũng mở luồng kết hợp từ A, không phải biểu mẫu B riêng. Tài liệu gốc đề cập A một lần và tối đa bốn phiên B; frontend tĩnh không quản lý người tham gia xuyên nhiều lần truy cập. Backend tùy chọn có giới hạn tối đa bốn phiên trên cùng mã, nhưng mã do người tham gia tự chọn không xác minh một người duy nhất. `session_order` để trống cho nhóm nghiên cứu điền. Không dùng các tài liệu SURVEY cũ của repo làm schema cho phiên bản này.
 
 ## Tệp
 
@@ -42,12 +42,16 @@ Self cho phép người tham gia tự phát nhạc bên ngoài, URL http/https t
 
 Payload: `{ "surveyA": { ... }, "sessionsB": [{ ... }] }`. Các khóa A/B theo Word, giá trị không trả lời giữ `""`, không biến thành 0. `delta = before - after`. Silence để trống `genre`, `bpm`, `like`, `track`, `track_url`.
 
-Nếu cấu hình endpoint HTTPS, máy chủ phải cho phép CORS và nhận JSON POST; trả HTTP 2xx với JSON `{"ok":true}` để báo thành công. Không gửi cookies hay referrer. Giới hạn chờ 15 giây. Khi lỗi vẫn giữ mã kết quả; máy chủ có thể đã nhận trước khi lỗi mạng nên không tự động gửi lại. Backend phải tự xác thực dữ liệu và xử lý trùng lặp; chưa có backend trong repo này. Chưa kiểm thử gửi thật vì endpoint cố ý để trống.
+Nếu cấu hình endpoint HTTPS, máy chủ phải cho phép CORS và nhận JSON POST; trả HTTP 2xx với JSON `{"ok":true}` để báo thành công. Không gửi cookies hay referrer. Giới hạn chờ 15 giây. Khi lỗi vẫn giữ mã kết quả; máy chủ có thể đã nhận trước khi lỗi mạng nên không tự động gửi lại. Backend phải tự xác thực dữ liệu và xử lý trùng lặp; backend tùy chọn có trong `server/`; xem `server/README.md`. Chưa kiểm thử gửi thật vì endpoint cố ý để trống.
 
 ## Dữ liệu và quyền riêng tư
 
-Không có trường tên/email, không thu thập IP bằng mã ứng dụng, không analytics/cookies/localStorage. Câu trả lời chỉ giữ trong bộ nhớ đến khi đóng/tải lại trang; không có khôi phục bản nháp. Không nhập thông tin nhận dạng vào note hoặc tên/link bài hát. Loại bỏ một số tham số theo dõi phổ biến khỏi URL, nhưng việc này không bảo đảm URL hoàn toàn vô danh. Nhà cung cấp hosting và máy chủ nhận có thể ghi nhật ký kết nối riêng; không hứa ẩn danh tuyệt đối. Không lưu dữ liệu thật, khóa API hay mật khẩu vào repo.
+Không có trường tên/email, không thu thập IP bằng mã ứng dụng, không analytics/cookies/localStorage. Câu trả lời chỉ giữ trong bộ nhớ đến khi đóng/tải lại trang; không có khôi phục bản nháp. Không nhập thông tin nhận dạng vào note hoặc tên/link bài hát. Loại bỏ một số tham số theo dõi phổ biến khỏi URL, nhưng việc này không bảo đảm URL hoàn toàn vô danh. Nhà cung cấp hosting và máy chủ nhận có thể ghi nhật ký kết nối riêng; không hứa ẩn danh tuyệt đối. Không lưu dữ liệu thật, khóa API hay mật khẩu vận hành vào repo. Mật khẩu mẫu công khai chỉ dùng với demo giả lập ở backend.
 
 ## Kiểm tra
 
 Chạy `node tests/core.test.cjs`. Bộ kiểm tra bao gồm mã Mxxxx, tuổi tối thiểu, các thang điểm, đồng ý tham gia, rỗng khác 0, URL, delta, silence và cờ mô phỏng. Cần kiểm tra thiết bị/âm thanh thực tế sau khi cung cấp nhạc nghiên cứu. Không tự động merge hoặc triển khai từ nhánh tính năng.
+
+## Quản trị mới
+
+Mở `/admin/` để đăng nhập và xem số phiếu A, số phiên B, hai bảng, bốn biểu đồ SVG thuần, CSV và làm mới. Xác thực tại backend, không có mật khẩu trong trang hoặc JavaScript frontend. Mặc định `adminApi` để trống cho tới khi có host HTTPS riêng. Xem [hướng dẫn backend](server/README.md) cho demo cục bộ, cấu hình triển khai và giới hạn. Dữ liệu demo là 48 phiếu A và 96 phiên B giả lập hoàn toàn; không đưa dữ liệu này vào phân tích thật.
