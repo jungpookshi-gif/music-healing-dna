@@ -116,3 +116,12 @@ body.ink-running .timer{font-size:clamp(64px,10vw,96px);margin:14px 0}
 #q-participant_name .code{display:none}
 
 #app>h1{font-size:clamp(25px,4vw,34px);margin:12px 0 16px}#intro-copy{font-size:14px}
+
+/* Four-language controls remain available throughout A, B and the receipt. */
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97)}
+.language-switch{display:flex;gap:3px;align-items:center;padding:4px;background:#f5f1fb;border:1px solid #e4dced;border-radius:99px}
+.language-switch button{min-height:38px;padding:7px 12px;border-radius:99px;font-size:12px;font-weight:650;background:transparent;color:#675379;box-shadow:none;white-space:nowrap}
+.language-switch button[aria-pressed=true]{background:#6246d9;color:#fff;box-shadow:0 2px 7px rgba(98,70,217,.15)}
+.language-switch button:enabled:hover{background:#e9e0f7;color:#49335f}
+.language-switch button[aria-pressed=true]:enabled:hover{background:#563bc6;color:#fff}
+@media(max-width:600px){header{gap:10px;padding:12px 16px}.language-switch{max-width:100%;flex-wrap:wrap;border-radius:18px}.language-switch button{padding:7px 10px;min-height:38px}header>a{font-size:14px}}

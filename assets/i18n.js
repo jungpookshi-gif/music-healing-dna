@@ -1,4 +1,5 @@
 window.I18N = {
+ languageChoice:['Chọn ngôn ngữ','언어 선택','Choose language','选择语言'],
  surveyTrack:['Câu hỏi trên đĩa','설문 트랙','Survey track','问卷曲目'],
  trackHint:['Chọn đáp án để sang track tiếp. Với tên, số và thang điểm, bấm Tiếp tục để xác nhận.','선택지를 고르면 다음 트랙으로 이동합니다. 이름·숫자·점수는 계속 버튼으로 확인하세요.','Choose an option to move to the next track. Confirm names, numbers and ratings with Continue.','选择答案后进入下一曲目；姓名、数字和评分请点击继续确认。'],
  previousTrack:['Track trước','이전 트랙','Previous track','上一曲目'],
