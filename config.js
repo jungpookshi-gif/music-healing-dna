@@ -1,1 +1,14 @@
-window.MUSIC_HEALING_CONFIG = Object.freeze({ formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdNKHgcgVoSoCQnRvD1rSZjsX_2_DdteVQyD9Lv_sFD2H9eYw/viewform" });
+// Public settings only. Never put credentials here.
+window.MHD_CONFIG = Object.freeze({
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbzITrFAe5iQI5zgqk8MDBE0Uw9cpCsMbMeo9SRClY8lUtqlRzfQY0o-CwCyG08wmth9/exec', // Deployed Google Apps Script backend.
+  endpoint: '',
+  adminApi: '', // HTTPS backend base URL, e.g. https://backend.example/api/
+  tracks: {
+    relax: {title:'', src:'', bpm:'', genre:''},
+    energy: {title:'', src:'', bpm:'', genre:''}
+  }
+});
+// src: a relative path such as assets/music/relax.mp3 (relative to repo root).
+// No music files were included in the upload. Empty presets are blocked in real mode.
+// ?test=1 (or #thu) enables sample synthetic sounds, always is_simulated=1.
+// endpoint: HTTPS URL accepting JSON and returning 2xx + {"ok":true}; requires CORS.

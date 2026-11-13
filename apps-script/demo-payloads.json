@@ -1,0 +1,70 @@
+{
+  "surveyA": {
+    "sheet": "surveyA",
+    "columns": [
+      "pid",
+      "age",
+      "gender",
+      "culture",
+      "status",
+      "listen_min",
+      "stress_genre",
+      "purpose",
+      "genre_like",
+      "stress_week",
+      "is_simulated"
+    ],
+    "row": [
+      "M9000",
+      25,
+      "na",
+      "vn",
+      "",
+      "",
+      "pop",
+      "",
+      7,
+      6,
+      1
+    ]
+  },
+  "sessionsB": {
+    "sheet": "sessionsB",
+    "columns": [
+      "pid",
+      "condition",
+      "date",
+      "genre",
+      "before",
+      "after",
+      "delta",
+      "bpm",
+      "like",
+      "setting",
+      "track",
+      "track_url",
+      "note",
+      "duration_sec",
+      "session_order",
+      "is_simulated"
+    ],
+    "row": [
+      "M9000",
+      "self",
+      "2026-11-13",
+      "pop",
+      2,
+      7,
+      -5,
+      "",
+      8,
+      "home",
+      "DEMO",
+      "",
+      "DỮ LIỆU GIẢ LẬP",
+      10,
+      "",
+      1
+    ]
+  }
+}

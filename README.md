@@ -1,25 +1,61 @@
-# Music Healing DNA
+# Music Healing DNA — A → B
 
-Website khảo sát tiếng Việt về sở thích âm nhạc và cảm nhận thư giãn. GitHub Pages phục vụ giao diện; Google Forms nhận phản hồi, Google Sheets lưu bảng dữ liệu riêng tư.
+Website tĩnh HTML/CSS/JavaScript, không cần build. Chọn Tiếng Việt, 한국어, English hoặc 简体中文; hoàn thành A → nghỉ 3 phút → B 10 phút → Gửi một lần. Trang quản trị mới ở `admin/index.html`, dùng backend xác thực riêng.
 
-## Tham gia
+## Nguồn và phạm vi
 
-[Biểu mẫu khảo sát](https://docs.google.com/forms/d/e/1FAIpQLSdNKHgcgVoSoCQnRvD1rSZjsX_2_DdteVQyD9Lv_sFD2H9eYw/viewform)
+Nội dung và giá trị lưu dựa trên `Bang-cau-hoi-va-dap-an.docx` trong ZIP người dùng cung cấp; HTML mẫu dùng để tham khảo giao diện và âm thanh thử. Mã người tham gia được thay theo yêu cầu mới thành M + đúng 4 chữ số tự chọn (ví dụ M0123). Không tự động tạo mã. Backend tùy chọn phát hiện A khác nhau có cùng mã; không xác minh danh tính người tham gia. Bản dịch Anh/Trung bổ sung cần người nghiên cứu rà soát ngôn ngữ trước khi thu thập chính thức.
 
-12 câu hỏi dành cho người từ 18 tuổi. Không hỏi tên, email, số điện thoại hay thông tin bệnh lý. Câu hỏi đồng ý tham gia là bắt buộc. Thông tin nền và cảm nhận có thể bỏ qua hoặc chọn không trả lời. Người không đồng ý hoặc dưới 18 tuổi được hướng dẫn đóng biểu mẫu. Câu 12 chỉ dành cho người có nghe nhạc để thư giãn trong 7 ngày qua; không áp dụng thì bỏ qua.
+Mỗi lần mở biểu mẫu hoàn thành một A và một phiên B. `b/index.html` cũng mở luồng kết hợp từ A, không phải biểu mẫu B riêng. Tài liệu gốc đề cập A một lần và tối đa bốn phiên B; frontend tĩnh không quản lý người tham gia xuyên nhiều lần truy cập. Backend tùy chọn có giới hạn tối đa bốn phiên trên cùng mã, nhưng mã do người tham gia tự chọn không xác minh một người duy nhất. `session_order` để trống cho nhóm nghiên cứu điền. Không dùng các tài liệu SURVEY cũ của repo làm schema cho phiên bản này.
 
-## Quản lý
+## Tệp
 
-- Chỉnh giao diện trong `index.html`; liên kết người trả lời trong `config.js`.
-- Google Forms → Responses → View in Sheets để quản lý dữ liệu.
-- Bảng phản hồi được tạo ở chế độ chỉ chủ sở hữu có quyền truy cập. Không công khai bảng tính, bản tóm tắt phản hồi hoặc CSV.
-- Không commit token, khóa API hoặc dữ liệu người tham gia vào repository này.
-- Bật GitHub Pages từ nhánh main, thư mục gốc. Không cần thư viện hay bước build.
+- `index.html`: chọn ngôn ngữ.
+- `a/index.html`, `b/index.html`: vỏ trang cho luồng kết hợp.
+- `assets/style.css`: giao diện thích ứng màn hình nhỏ.
+- `assets/schema.js`: câu hỏi và giá trị lưu.
+- `assets/i18n.js`: bản dịch giao diện.
+- `assets/core.js`: kiểm tra và chuẩn hóa dữ liệu.
+- `assets/app.js`: điều phối luồng, đồng hồ, submit và sao chép kết quả.
+- `assets/audio.js`: âm thanh tổng hợp thử từ mẫu B.
+- `config.js`: cấu hình công khai, không chứa bí mật.
+- `tests/core.test.cjs`: kiểm tra với dữ liệu giả.
+- `.nojekyll`: phục vụ tài nguyên tĩnh trên GitHub Pages.
 
-## Phương pháp
+## Chạy và chia sẻ
 
-Câu 10 là thang cảm nhận riêng của dự án từ 0 đến 10, không phải thang đo lâm sàng đã thẩm định. Câu 12 là hồi tưởng chủ quan, không phải phép đo trước–sau độc lập. Không suy ra quan hệ nhân quả hoặc hiệu quả chữa bệnh. “DNA” là ẩn dụ, không thu dữ liệu di truyền.
+Đặt nội dung ở gốc repo GitHub Pages. Mọi đường dẫn ứng dụng là tương đối để chạy dưới `/<repo>/`. Không cần npm hay build. Có thể kiểm tra cục bộ bằng một HTTP server tĩnh.
+
+Tham số `?lang=vi|ko|en|zh`, `&condition=self|relax|energy|silence`. Điều kiện được chỉ định bằng URL sẽ khóa lựa chọn. Không dùng mã người tham gia trong URL.
+
+`?test=1` (hoặc `#thu`) rút nghỉ xuống 3 giây, phiên xuống 10 giây, luôn lưu `is_simulated=1` trong cả A và B. Không đưa liên kết thử vào thu thập thật. Bình thường `is_simulated=0`.
+
+## Âm nhạc
+
+ZIP không có MP3/WAV và các URL nhạc preset trong mẫu đều trống. Vì vậy relax/energy bị chặn ở chế độ thật cho đến khi cung cấp tài nguyên. Chép tệp được phép sử dụng vào `assets/music/` và đặt `src`, `title`, `bpm`, `genre` tương ứng trong `config.js`; đường dẫn `src` tính từ gốc repo. BPM chưa biết để trống, nếu có phải từ 20 đến 300. Genre phải thuộc giá trị trong schema. Không thay nhạc nghiên cứu bằng âm thanh tổng hợp: tổng hợp chỉ có trong chế độ thử và được đánh dấu mô phỏng.
+
+Self cho phép người tham gia tự phát nhạc bên ngoài, URL http/https tùy chọn; silence không phát nhạc. Trình duyệt yêu cầu bấm bắt đầu để phát âm thanh. Đồng hồ đo thời gian phiên, không chứng minh người tham gia thực sự nghe nhạc; mở ứng dụng khác có thể ảnh hưởng phát âm thanh. Dừng sớm và bỏ nghỉ được ghi vào note.
+
+## Gửi và kết quả
+
+`config.js` có `endpoint: ''` mặc định. Nút cuối gọi `submit()`. Khi chưa có endpoint, không gửi dữ liệu đến máy chủ; hiển thị chuỗi `MHD1:` + Base64 của JSON UTF-8 để sao chép. Đây **không phải mã hóa bảo mật**. Giữ kết quả riêng tư và gửi cho nhóm nghiên cứu qua kênh đã thống nhất.
+
+Payload: `{ "surveyA": { ... }, "sessionsB": [{ ... }] }`. Các khóa A/B theo Word, giá trị không trả lời giữ `""`, không biến thành 0. `delta = before - after`. Silence để trống `genre`, `bpm`, `like`, `track`, `track_url`.
+
+Nếu cấu hình endpoint HTTPS, máy chủ phải cho phép CORS và nhận JSON POST; trả HTTP 2xx với JSON `{"ok":true}` để báo thành công. Không gửi cookies hay referrer. Giới hạn chờ 15 giây. Khi lỗi vẫn giữ mã kết quả; máy chủ có thể đã nhận trước khi lỗi mạng nên không tự động gửi lại. Backend phải tự xác thực dữ liệu và xử lý trùng lặp; backend tùy chọn có trong `server/`; xem `server/README.md`. Chưa kiểm thử gửi thật vì endpoint cố ý để trống.
+
+## Dữ liệu và quyền riêng tư
+
+Không có trường tên/email, không thu thập IP bằng mã ứng dụng, không analytics/cookies/localStorage. Câu trả lời chỉ giữ trong bộ nhớ đến khi đóng/tải lại trang; không có khôi phục bản nháp. Không nhập thông tin nhận dạng vào note hoặc tên/link bài hát. Loại bỏ một số tham số theo dõi phổ biến khỏi URL, nhưng việc này không bảo đảm URL hoàn toàn vô danh. Nhà cung cấp hosting và máy chủ nhận có thể ghi nhật ký kết nối riêng; không hứa ẩn danh tuyệt đối. Không lưu dữ liệu thật, khóa API hay mật khẩu vận hành vào repo. Mật khẩu mẫu công khai chỉ dùng với demo giả lập ở backend.
 
 ## Kiểm tra
 
-Đã kiểm tra nội dung 12 câu hỏi, cấu hình không thu email, không yêu cầu đăng nhập để giới hạn phản hồi, không chia sẻ tóm tắt câu trả lời, và liên kết bảng phản hồi. Không gửi dữ liệu giả vào khảo sát; chưa kiểm thử một lượt gửi đến bảng tính.
+Chạy `node tests/core.test.cjs`. Bộ kiểm tra bao gồm mã Mxxxx, tuổi tối thiểu, các thang điểm, đồng ý tham gia, rỗng khác 0, URL, delta, silence và cờ mô phỏng. Cần kiểm tra thiết bị/âm thanh thực tế sau khi cung cấp nhạc nghiên cứu. Không tự động merge hoặc triển khai từ nhánh tính năng.
+
+## Quản trị mới
+
+Mở `/admin/` để đăng nhập và xem số phiếu A, số phiên B, hai bảng, bốn biểu đồ SVG thuần, CSV và làm mới. Xác thực tại backend, không có mật khẩu trong trang hoặc JavaScript frontend. Mặc định `adminApi` để trống cho tới khi có host HTTPS riêng. Xem [hướng dẫn backend](server/README.md) cho demo cục bộ, cấu hình triển khai và giới hạn. Dữ liệu demo là 48 phiếu A và 96 phiên B giả lập hoàn toàn; không đưa dữ liệu này vào phân tích thật.
+
+## Google Apps Script + Sheet
+
+Backend thay thế đã có trong `apps-script/Code.gs` và `apps-script/Schema.gs`. Đọc [hướng dẫn cho người mới và checklist](apps-script/README.md), đặt Script Properties và triển khai Web app /exec; sau đó chỉ điền `appsScriptUrl` trong config.js. Admin và khảo sát tự dùng transport này. Có trang `admin/connection-test.html` để kiểm tra GET/POST từ github.io và proxy tùy chọn nếu CORS bị chặn. Chưa có deployment Google thực hoặc kiểm thử CORS thực trong PR này.
