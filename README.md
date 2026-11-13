@@ -32,7 +32,7 @@ Tham số `?lang=vi|ko|en|zh`, `&condition=self|relax|energy|silence`. Điều k
 
 ## Âm nhạc
 
-Mỗi điều kiện relax/energy có hai lựa chọn trong `config.js`: Dreams Become Real / Meditation Impromptu 01 và Electrodoodle / EDM Detection Mode (Kevin MacLeod, CC BY 4.0). Nguồn và giấy phép ở `music-credits.html`, được liên kết tại bước chọn bài. Phát trực tiếp bản gốc từ máy chủ tác giả; không host MP3 trong repo, không chỉnh sửa hoặc chuẩn hóa loudness. Âm lượng trình phát là 50%, không bảo đảm loudness hoặc mức dB tương đương giữa bài/thiết bị. File đã tải để kiểm tra giải mã trước khi kết nối.
+Mỗi điều kiện relax/energy có bảy lựa chọn trong `config.js`, gồm 2 bài ban đầu và 5 bài thêm mới (Kevin MacLeod, CC BY 4.0). Nguồn và giấy phép ở `music-credits.html`, được liên kết tại bước chọn bài. Phát trực tiếp bản gốc từ máy chủ tác giả; không host MP3 trong repo, không chỉnh sửa hoặc chuẩn hóa loudness. Âm lượng trình phát là 50%, không bảo đảm loudness hoặc mức dB tương đương giữa bài/thiết bị. File đã tải để kiểm tra giải mã trước khi kết nối.
 
 Chọn một bài trước khi bắt đầu, khóa lựa chọn trong phiên, lặp bản gốc đến hết thời gian 10 phút. Ghi tên bài/nghệ sĩ, URL trang nguồn, BPM do tác giả công bố và genre vào sessionsB; BPM của Meditation Impromptu 01 để trống vì chưa công bố. Electronica dùng other trong schema hiện tại. Giữ tương thích cấu hình single-track cũ. Nguồn ngoài có thể gián đoạn hoặc thay đổi; lỗi phát chặn bắt đầu hoặc đánh dấu phiên gián đoạn. Cần pilot và kiểm tra thiết bị trước thu thập chính thức. Đây là lựa chọn kích thích theo đặc điểm âm nhạc, không phải xác nhận hiệu quả trị liệu từng bài. Lựa chọn bài của người tham gia có thể ảnh hưởng kết quả; phân tích theo track và like.
 Self cho phép người tham gia tự phát nhạc bên ngoài, URL http/https tùy chọn; silence không phát nhạc. Trình duyệt yêu cầu bấm bắt đầu để phát âm thanh. Đồng hồ đo thời gian phiên, không chứng minh người tham gia thực sự nghe nhạc; mở ứng dụng khác có thể ảnh hưởng phát âm thanh. Dừng sớm và bỏ nghỉ được ghi vào note.
@@ -60,3 +60,6 @@ Mở `/admin/` để đăng nhập và xem số phiếu A, số phiên B, hai b�
 ## Google Apps Script + Sheet
 
 Backend thay thế đã có trong `apps-script/Code.gs` và `apps-script/Schema.gs`. Đọc [hướng dẫn cho người mới và checklist](apps-script/README.md), đặt Script Properties và triển khai Web app /exec; sau đó chỉ điền `appsScriptUrl` trong config.js. Admin và khảo sát tự dùng transport này. Có trang `admin/connection-test.html` để kiểm tra GET/POST từ github.io và proxy tùy chọn nếu CORS bị chặn. Chưa có deployment Google thực hoặc kiểm thử CORS thực trong PR này.
+
+## Mở rộng thư viện nhạc
+Mỗi nhóm giữ 2 bài ban đầu và thêm 5 bài; tổng 14 bản thu. Relax thêm Morning, Fresh Air, Water Lily, Dream Culture, Gymnopedie No. 1; energy thêm Cipher, Motivator, Nonstop, Nowhere Land, Feelin Good. Chi tiết tiêu chí, tác giả/nhạc sĩ và nguồn ở music-credits.html. Nút mở nhạc trong tab mới đã bỏ khỏi phiên; URL nguồn vẫn được lưu vào kết quả.

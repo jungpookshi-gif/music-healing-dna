@@ -1,5 +1,5 @@
 window.I18N = {
- selectTrack:['Chọn một trong hai bài nhạc','두 곡 중 하나 선택','Choose one of two tracks','选择两首曲目之一'],
+ selectTrack:['Chọn một bài nhạc (7 lựa chọn)','음악 한 곡 선택(7곡)','Choose a track (7 options)','选择一首曲目（7个选项）'],
  trackHelp:['Chọn trước khi bắt đầu. Bài đã chọn sẽ lặp lại trong phiên 10 phút; không đổi bài giữa phiên.','시작 전에 선택하세요. 선택한 곡은 10분 동안 반복되며 세션 중 변경할 수 없습니다.','Choose before starting. Your track repeats during the 10-minute session and cannot be changed during it.','开始前选择。所选曲目将在10分钟内循环播放，环节中无法更换。'],
  musicCredits:['Nguồn nhạc và giấy phép','음원 출처 및 이용 허가','Music sources and license','音乐来源与许可'],
  playingTrack:['Bài đang nghe: ','재생 곡: ','Listening to: ','正在播放：'],
