@@ -1,4 +1,9 @@
 window.I18N = {
+ selectTrack:['Chọn một trong hai bài nhạc','두 곡 중 하나 선택','Choose one of two tracks','选择两首曲目之一'],
+ trackHelp:['Chọn trước khi bắt đầu. Bài đã chọn sẽ lặp lại trong phiên 10 phút; không đổi bài giữa phiên.','시작 전에 선택하세요. 선택한 곡은 10분 동안 반복되며 세션 중 변경할 수 없습니다.','Choose before starting. Your track repeats during the 10-minute session and cannot be changed during it.','开始前选择。所选曲目将在10分钟内循环播放，环节中无法更换。'],
+ musicCredits:['Nguồn nhạc và giấy phép','음원 출처 및 이용 허가','Music sources and license','音乐来源与许可'],
+ playingTrack:['Bài đang nghe: ','재생 곡: ','Listening to: ','正在播放：'],
+ bpmUnknown:['BPM: chưa công bố','BPM: 미공개','BPM: unpublished','BPM：未公布'],
  partial:['Chưa xác nhận lưu đầy đủ A + B. Một phần dữ liệu có thể đã được ghi. Giữ mã kết quả và liên hệ nhóm nghiên cứu; không tự gửi lại.','A + B 전체 저장을 확인할 수 없습니다. 일부가 기록됐을 수 있습니다. 결과 코드를 보관하고 연구팀에 문의하세요. 임의로 재전송하지 마세요.','Full A + B storage could not be confirmed. Some data may have been saved. Keep the result code and contact the research team; do not retry blindly.','无法确认 A + B 是否全部保存，部分数据可能已写入。请保留结果代码并联系研究团队，不要盲目重试。'],
  confirmed:['Đã xác nhận: ','저장 확인: ','Acknowledged: ','已确认：'],
  title:['Khảo sát A → Phiên nghe nhạc B','설문 A → 음악 청취 세션 B','Survey A → Listening session B','问卷 A → 音乐聆听环节 B'],

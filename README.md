@@ -32,8 +32,9 @@ Tham số `?lang=vi|ko|en|zh`, `&condition=self|relax|energy|silence`. Điều k
 
 ## Âm nhạc
 
-ZIP không có MP3/WAV và các URL nhạc preset trong mẫu đều trống. Vì vậy relax/energy bị chặn ở chế độ thật cho đến khi cung cấp tài nguyên. Chép tệp được phép sử dụng vào `assets/music/` và đặt `src`, `title`, `bpm`, `genre` tương ứng trong `config.js`; đường dẫn `src` tính từ gốc repo. BPM chưa biết để trống, nếu có phải từ 20 đến 300. Genre phải thuộc giá trị trong schema. Không thay nhạc nghiên cứu bằng âm thanh tổng hợp: tổng hợp chỉ có trong chế độ thử và được đánh dấu mô phỏng.
+Mỗi điều kiện relax/energy có hai lựa chọn trong `config.js`: Dreams Become Real / Meditation Impromptu 01 và Electrodoodle / EDM Detection Mode (Kevin MacLeod, CC BY 4.0). Nguồn và giấy phép ở `music-credits.html`, được liên kết tại bước chọn bài. Phát trực tiếp bản gốc từ máy chủ tác giả; không host MP3 trong repo, không chỉnh sửa hoặc chuẩn hóa loudness. Âm lượng trình phát là 50%, không bảo đảm loudness hoặc mức dB tương đương giữa bài/thiết bị. File đã tải để kiểm tra giải mã trước khi kết nối.
 
+Chọn một bài trước khi bắt đầu, khóa lựa chọn trong phiên, lặp bản gốc đến hết thời gian 10 phút. Ghi tên bài/nghệ sĩ, URL trang nguồn, BPM do tác giả công bố và genre vào sessionsB; BPM của Meditation Impromptu 01 để trống vì chưa công bố. Electronica dùng other trong schema hiện tại. Giữ tương thích cấu hình single-track cũ. Nguồn ngoài có thể gián đoạn hoặc thay đổi; lỗi phát chặn bắt đầu hoặc đánh dấu phiên gián đoạn. Cần pilot và kiểm tra thiết bị trước thu thập chính thức. Đây là lựa chọn kích thích theo đặc điểm âm nhạc, không phải xác nhận hiệu quả trị liệu từng bài. Lựa chọn bài của người tham gia có thể ảnh hưởng kết quả; phân tích theo track và like.
 Self cho phép người tham gia tự phát nhạc bên ngoài, URL http/https tùy chọn; silence không phát nhạc. Trình duyệt yêu cầu bấm bắt đầu để phát âm thanh. Đồng hồ đo thời gian phiên, không chứng minh người tham gia thực sự nghe nhạc; mở ứng dụng khác có thể ảnh hưởng phát âm thanh. Dừng sớm và bỏ nghỉ được ghi vào note.
 
 ## Gửi và kết quả
