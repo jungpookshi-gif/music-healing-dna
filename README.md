@@ -80,3 +80,6 @@ A hiển thị 10 track: track đầu là tên/đồng ý, tiếp theo là A02�
 
 ## Chuyển bốn ngôn ngữ trong khảo sát (2026-11-14)
 Header của a/ và b/ luôn có Tiếng Việt, 한국어, English, 中文. Chuyển ngôn ngữ tại chỗ qua DOM text/ARIA đã kiểm soát; không reload, không dựng lại form, không thay value/checked/URL bài nhạc, không dừng audio hoặc reset timer. Các vùng tên/người tham gia/mã/ngày/bài nhạc được bảo vệ, thông tin động được render lại từ state. URL chỉ cập nhật tham số lang qua history.replaceState, giữ condition/test/hash. Có nhãn ngôn ngữ hiện tại, aria-pressed và lang cho từng nút. Kiểm tra chuỗi có dấu ngoặc, dấu câu, ngôn ngữ đa byte và dữ liệu người tham gia trùng từ trong UI.
+
+## Admin: chế độ dữ liệu và bốn ngôn ngữ (2026-11-17)
+Bỏ cảnh báo demo/mật khẩu yếu cố định. Trước đăng nhập chưa xác nhận chế độ; sau xác thực, dùng cờ demo từ backend để hiển thị cảnh báo chỉ khi cần. Không tự đổi DEMO_MODE hay sửa dữ liệu đã thu. Chế độ thu thập chọn mặc định dữ liệu is_simulated=0; vẫn cho lọc/xuất dữ liệu giả lập riêng. Admin có VI/KO/EN/ZH, chuyển tại chỗ giữ phiên đăng nhập và bộ lọc. Nhãn biểu đồ/bảng được dịch; tên, góp ý, dữ liệu gốc và mã cột CSV được giữ nguyên.
