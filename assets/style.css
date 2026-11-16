@@ -132,3 +132,6 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;fl
 .session-vinyl[data-spinning=true] .vinyl-disc{animation-play-state:running}
 #app[data-motion-off=true] .session-vinyl .vinyl-disc{animation-play-state:paused}
 @media(max-width:600px){.session-vinyl{margin:0 auto -26px;transform:scale(.85)}}
+
+/* Final optional fields use human-readable labels. */
+#review .code{display:none}
