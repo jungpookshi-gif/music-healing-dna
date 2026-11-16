@@ -83,3 +83,6 @@ Header của a/ và b/ luôn có Tiếng Việt, 한국어, English, 中文. Chu
 
 ## Admin: chế độ dữ liệu và bốn ngôn ngữ (2026-11-17)
 Bỏ cảnh báo demo/mật khẩu yếu cố định. Trước đăng nhập chưa xác nhận chế độ; sau xác thực, dùng cờ demo từ backend để hiển thị cảnh báo chỉ khi cần. Không tự đổi DEMO_MODE hay sửa dữ liệu đã thu. Chế độ thu thập chọn mặc định dữ liệu is_simulated=0; vẫn cho lọc/xuất dữ liệu giả lập riêng. Admin có VI/KO/EN/ZH, chuyển tại chỗ giữ phiên đăng nhập và bộ lọc. Nhãn biểu đồ/bảng được dịch; tên, góp ý, dữ liệu gốc và mã cột CSV được giữ nguyên.
+
+## Phân tích tự động dưới biểu đồ (2026-11-17)
+Mỗi biểu đồ có nhận xét VI/KO/EN/ZH tính từ cùng bộ lọc với hình vẽ, sau xác thực. Không gọi AI/API ngoài hoặc đưa dữ liệu ra ngoài. Heatmap dùng tỷ lệ trong nhóm tuổi và xử lý đồng hạng; Δ trình bày trung bình/số phiên theo điều kiện; trước–sau dùng cùng phiên hợp lệ, số mã riêng và cờ lặp; scatter có Pearson mô tả nếu >=3 điểm và cả hai biến có phương sai. Không p-value, không kết luận điều trị/nhân quả/ưu thế. Cảnh báo riêng khi dữ liệu đang lọc chứa giả lập. Dữ liệu trống/thiếu/đồng giá trị có thông báo riêng; nhận xét bị xóa khỏi DOM khi đăng xuất.
